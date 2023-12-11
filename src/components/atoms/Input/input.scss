@@ -1,0 +1,28 @@
+.input-wrapper {
+
+    margin-bottom: 16px;
+
+    .label {
+        font-size: 16px;
+        color: black;
+        margin: 0;
+    }
+
+    .input {
+        border: 2 solid green;
+        padding: 12px;
+        border-radius: 12px;
+        outline: none;
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 16px;
+        transition: all 0.2s ease-in-out;
+        &:focus {
+            border: 2px solid green;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+
+        }
+
+        
+    }
+}

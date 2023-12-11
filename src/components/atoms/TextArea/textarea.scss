@@ -1,0 +1,33 @@
+.textarea-wrapper{
+    margin-bottom: 20px;
+    .label{
+        font-size: 16px;
+        color: black;
+        margin: 0;
+        padding: 5px 0;
+        display: block;
+    }
+    .textarea{
+        width: 100%;
+        padding: 12px;
+        border-radius: 12px;
+        outline: none;
+        box-sizing: border-box;
+        font-size: 16px;
+        transition: all 0.2s ease-in-out;
+        &:focus {
+            
+            border: 2px solid green;
+            background-color: #f7fafc;
+            color: black;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            border-radius: 12px;
+            outline: none;
+            padding: 12px;
+            font-size: 16px;
+            transition: all 0.2s ease-in-out;
+
+        }
+
+    }
+}

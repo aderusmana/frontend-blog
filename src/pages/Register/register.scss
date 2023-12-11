@@ -1,0 +1,49 @@
+.main-page{
+    display: flex;
+    height: 100vh;
+    box-sizing: border-box;
+
+}
+
+.left{
+    flex: 1;
+    background: linear-gradient(to right, #45d2fdb4, rgba(225, 134, 233, 0.623));
+    height: 100;
+
+    .bg-image{
+        width: 100%;
+        height: 100%;
+        
+    }
+
+}
+.right{
+    width: 560px;
+    height: 100;
+    background: linear-gradient(to right, #45d2fd71, rgba(225, 134, 233, 0.264))
+    , url(./../../assets//images//login-bg.jpg);
+    padding: 0 30px 0 30px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    
+
+    img {
+        width: 300px;
+        margin: 10px auto;
+        padding: 20px;
+        display: block;
+    }
+    h1{
+        text-align: center;
+    }
+
+    .title {
+        font-size: 20px;
+        font-weight: bold;
+        color: black;
+    }
+
+}

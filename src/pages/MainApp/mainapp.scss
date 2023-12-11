@@ -1,0 +1,31 @@
+.main-app-wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    
+    .header-wrapper{
+        flex: 0;
+
+    }
+   
+    
+    .content-wrapper{
+        max-width: 1200px;
+        margin: auto;
+        width: 100%;
+        flex: 1;
+        padding: 10px 10px 0px 10px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        box-sizing: border-box;
+        &.no-scrollbar{
+            overflow: hidden;
+        }
+    }
+
+    .footer-wrapper{
+        flex: 0;
+    }
+
+}
