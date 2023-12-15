@@ -7,7 +7,7 @@ const ButtonBack = () => {
   const navigate = useNavigate();
   return (
     <div>
-      <Link className="textback" to="/" title="Back" onClick={() => navigate("/")}>
+      <Link className="textback" to="/" title="Back" onClick={() => navigate(-1)}>
         <FaArrowLeft className="iconback" /> Back
       </Link>
     </div>

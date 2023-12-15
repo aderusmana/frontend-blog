@@ -1,10 +1,13 @@
-
-import { Router } from '../config';
+import React from 'react';
+import { Router, Store } from '../config';
+import {Provider} from 'react-redux'
 
 
 function App() {
   return (
-  <Router />
+    <Provider store = {Store}> 
+      <Router />
+    </Provider>
   );
 }
 
