@@ -16,7 +16,7 @@ function Router() {
       <Routes>
         <Route path="/" element={<MainApp />}>
           <Route index element={<Home />} />
-          <Route path="create-post" element={<CreatePost />} />
+          <Route path="create-post/:id?" element={<CreatePost />} />
           <Route path="detail-post/:id" element={<DetailPost />} />
         </Route>
         <Route path="/login" element={<Login />} />

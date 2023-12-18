@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setDataPosts } from "../../config/redux/action";
 
+
 const Home = () => {
   const [counter,setCounter] = useState(1)
  const {dataPosts,page} = useSelector(state => state.homeReducer)
@@ -38,7 +39,7 @@ const Home = () => {
         ))}
       </div>
       <div className="pagination">
-        <ButtonPrimary title={"Previous"} onClick={previous} />
+        <ButtonPrimary   title={"Previous"}  onClick={previous}  />
         <p className="text-page">{page.currentPage} / {page.totalPage}</p>
         <ButtonPrimary title={"Next"} onClick={next} />
       </div>

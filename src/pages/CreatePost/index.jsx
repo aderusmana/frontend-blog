@@ -1,53 +1,77 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ButtonBack, ButtonPrimary, Input, TextArea } from "../../components";
 import "./create-post.scss";
+import {  useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { postToAPI, setForm, setImgPreview, updateToAPI } from "../../config/redux/action";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const CreatePost = () => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState(null);
-  const [imagePreview, setImagePreview] = useState(null);
-
+  const {form, imgPreview } = useSelector(state => state.createPostReducer)
+  const {title, description, image} = form
+  const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const onSubmit = () => {
-    const data = new FormData();
-    data.append("title", title);
-    data.append("description", description);
-    data.append("image", image);
+  const [isUpdate,setIsUpdate] = useState(false)
+  const {id} = useParams() 
 
-    axios.post('http://localhost:4000/v1/api/createpost',data,{
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    })
-    .then((res) => {
-      alert("Create Post Success")
-      navigate("/")
-    })
-    .catch((err) => {
-      alert("Create Post Failed",err)
-    })
+  useEffect(()=>{
+    if(id){
+      setIsUpdate(true)
+      axios.get(`http://localhost:4000/v1/api/post/${id}`)
+      .then(res => {
+        const response = res.data.data
+        dispatch(setForm('title',response.title))
+        dispatch(setForm('description',response.description))
+        dispatch(setForm('image',response.image))
+        dispatch(setImgPreview(`http://localhost:4000/${response.image}`))
+      })
+      .catch(err => console.log(err))
+    }else{
+      setIsUpdate(false)
+    }
+  },[id,dispatch])
+
+  const onSubmit = () => {
+    if (isUpdate) {
+      console.log('update');
+      dispatch(updateToAPI(form, id))
+        .then(() => {
+          navigate("/");
+        })
+        .catch((err) => {
+          console.error("Update failed:", err);
+        });
+    } else {
+      console.log('create');
+      dispatch(postToAPI(form))
+        .then(() => {
+          navigate("/");
+        })
+        .catch((err) => {
+          console.error("Creation failed:", err);
+        });
+    }
   };
   const onImageUpload = (e) => {
       const file = e.target.files[0];
-      setImage(file)
-      setImagePreview(URL.createObjectURL(file))
+      dispatch(setForm('image',file))
+      dispatch(setImgPreview(URL.createObjectURL(file)))
   };
+
+  
   return (
     <div>
       <ButtonBack />
-      <h1 className="title">Create New Blog Post</h1>
+      <h1 className="title">{isUpdate ? "Update" : "Create New"} Blog Post</h1>
       <Input
         label={"Post Title"}
         placeholder="Input Post Title"
         type="text"
         value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        onChange={(e) => dispatch(setForm('title',e.target.value))}
       />
-      {image && <img src={imagePreview} alt="gambar" />}
+      {image && <img src={imgPreview} alt="gambar" />}
       <Input
         label={"Upload Image"}
         type="file"
@@ -57,9 +81,9 @@ const CreatePost = () => {
         label={"Description"}
         placeholder="Input Description"
         value={description}
-        onChange={(e) => setDescription(e.target.value)}
+        onChange={(e) => dispatch(setForm('description',e.target.value))}
       />
-      <ButtonPrimary title={"Add Post"} onClick={onSubmit} />
+      <ButtonPrimary title={isUpdate ? "Update" : "Create"} onClick={onSubmit} />
     </div>
   );
 };

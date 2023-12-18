@@ -31,3 +31,36 @@
 .menu-item:hover {
     text-decoration: underline;
 }
+
+.menu-dropdown {
+    cursor: pointer;
+    position: relative; /* Tambahkan posisi relatif */
+  }
+  
+  .dropdown-content {
+    position: absolute;
+    top: 60px; /* Atur posisi dropdown di bawah tombol dropdown */
+    right: 0;
+    background-color: #00000067;
+    min-width: 120px;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    color: white;
+  }
+  
+  .dropdown-content .dropdown-item {
+    padding: 0px  10px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #00000069;
+    color: white;
+  }
+  
+  .menu-dropdown:hover .dropdown-content {
+    display: block;
+    
+  }

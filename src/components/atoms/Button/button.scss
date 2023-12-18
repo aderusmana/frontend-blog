@@ -29,7 +29,7 @@
     
 }
 .button-danger:hover {
-    background-color: rgb(31, 0, 1);
+    background-color: rgb(165, 2, 7);
 }
 
 .button-primary {
@@ -75,5 +75,21 @@
             transform: scale(1.2);
         }
 
+    }
+}
+.button-warning {
+    background-color: rgb(195, 195, 6);
+    color: black;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    &:hover{
+        background-color: rgb(169, 169, 6);
+        color: white;
+        transition: all 0.2s ease-in-out;
     }
 }

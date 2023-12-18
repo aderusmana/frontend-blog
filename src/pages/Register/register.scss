@@ -2,34 +2,25 @@
     display: flex;
     height: 100vh;
     box-sizing: border-box;
-
-}
-
-.left{
-    flex: 1;
-    background: linear-gradient(to right, #45d2fdb4, rgba(225, 134, 233, 0.623));
-    height: 100;
-
-    .bg-image{
-        width: 100%;
-        height: 100%;
-        
-    }
-
-}
-.right{
-    width: 560px;
-    height: 100;
     background: linear-gradient(to right, #45d2fd71, rgba(225, 134, 233, 0.264))
-    , url(./../../assets//images//login-bg.jpg);
-    padding: 0 30px 0 30px;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
+    , url(./../../assets//images//login-bg.jpg) no-repeat center center;
+    background-size: cover;
     justify-content: center;
-    box-sizing: border-box;
-    
+    align-items: center;
 
+}
+
+.content{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        background-color: rgba(255, 255, 255, 0.307);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+        width: calc(100% - 40px);
+        max-width: 500px;
+        margin: 0 auto;
     img {
         width: 300px;
         margin: 10px auto;
